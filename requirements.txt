@@ -1,0 +1,4 @@
+telethon
+python-dotenv
+tqdm
+moviepy
