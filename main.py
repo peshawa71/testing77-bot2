@@ -113,7 +113,7 @@ def edit_video(video_path):
 
         # def simple_motion(t):
         # return 180, 180
-        logo_clip = ImageClip("sponsors\images\logo_gull2bigger.png").set_duration(main_video.duration)
+        logo_clip = ImageClip("sponsors/images/logo_gull2bigger.png").set_duration(main_video.duration)
         #video sponsor_onscreen logo_clip = resize(logo_clip, width=1980, height=1080)# set > durtion logo
         logo_clip = logo_clip.set_position((635, 0))
         # Load the base sponsor image
