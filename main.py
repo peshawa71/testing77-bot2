@@ -228,7 +228,7 @@ def download_and_forward(chat, limit):
 
 if __name__ == "__main__":
 
-    limit = 200 # its 100 if we have a tekall hh.
+    limit = 300 # its 100 if we have a tekall hh.
     source = "@reng_tv"
     sponsor_source = "@gullsponsors"
 
