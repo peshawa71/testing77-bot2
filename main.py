@@ -1,5 +1,4 @@
 from moviepy.editor import VideoFileClip, ImageClip, concatenate_videoclips, CompositeVideoClip
-from moviepy import *
 import os
 from dotenv import load_dotenv
 from telethon.sync import TelegramClient
