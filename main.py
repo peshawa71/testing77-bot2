@@ -210,9 +210,9 @@ def download_and_forward(chat, limit):
                 filename = client.download_media(msg, DOWNLOADS_DIR)
 
                 if filename:
-
-                    edited_path = edit_video(filename)
                     print(f"\n✅ Downloaded: {filename}")
+                    edited_path = edit_video(filename)
+
 
                     # Send to another channel
                     client.send_file(channel_to_send, edited_path, caption=f"{msg.text}", supports_streaming=True)
