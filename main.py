@@ -9,7 +9,7 @@ import time
 
 
 
-# Load .env
+# Load .env new
 load_dotenv()
 
 api_id = int(os.getenv("APITELEGRAM_ID")) 
