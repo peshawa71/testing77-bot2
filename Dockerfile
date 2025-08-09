@@ -1,26 +1,24 @@
-RUN apt-get update && apt-get install -y ffmpeg
-a# Use official Python image
+# Use a lightweight Python base image
 FROM python:3.11-slim
 
 # Set working directory
 WORKDIR /app
 
-# Install system dependencies
+# Install system dependencies needed by moviepy
 RUN apt-get update && apt-get install -y \
     ffmpeg \
     imagemagick \
     libx11-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Optional: Prevent ImageMagick security policy errors
+# Fix ImageMagick policy (avoids 'not authorized' error)
 RUN sed -i 's/rights="none"/rights="read|write"/g' /etc/ImageMagick-6/policy.xml || true
 
-# Copy requirements and install Python packages
-COPY requirements.txt .
-RUN pip install --upgrade pip && pip install -r requirements.txt
+# Install moviepy and its required Python libraries
+RUN pip install --no-cache-dir moviepy
 
-# Copy your app code into the container
-COPY . .
+# Optional: Copy your local files into the container
+# COPY . .
 
-# Default command (change to match your app)
-CMD ["python", "main.py"]
+# Set default command (update if needed)
+CMD ["python3"]
