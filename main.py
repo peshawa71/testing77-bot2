@@ -20,7 +20,7 @@ os.makedirs(DOWNLOADS_DIR, exist_ok=True)
 client = TelegramClient("new_session", api_id, api_hash)
 client.start()
 
-file_exports = "exported/new_video"
+file_exports = "exported"
 if not os.path.exists(file_exports):
     os.mkdir(file_exports)
     print(f"Created: {file_exports}")
