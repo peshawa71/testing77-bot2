@@ -178,6 +178,7 @@ def edit_video(video_path):
         output_filename = get_available_filename("exported_taste/new_video")
         # final_clip = concatenate_videoclips([split_1, split_2]) >>> taste
         final_clip.write_videofile(output_filename, fps=main_video.fps)
+        print("editing completed >>>>>")
 
     return output_filename
 
