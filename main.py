@@ -1,4 +1,3 @@
-from moviepy import editor
 from moviepy.editor import VideoFileClip, ImageClip, concatenate_videoclips, CompositeVideoClip
 import os
 from dotenv import load_dotenv
@@ -105,7 +104,7 @@ def edit_video(video_path):
         cut_place_2 = 22*60 # cut in minuite 22
         cut_place_3 = main_video.duration - 20 # for setting cut before 1 min to END
         cut_place_4 = main_video.duration
-        
+        print("its editing function 1")
         # taste_part:
         # cut_place_1 = 6*60
         # cut_place_2 = 22*60 # cut in minuite 22
@@ -116,6 +115,7 @@ def edit_video(video_path):
         # def simple_motion(t):
         # return 180, 180
         logo_clip = ImageClip("sponsors/images/logo_gull2bigger.png").set_duration(main_video.duration)
+        print("its editing function 2")
         #video sponsor_onscreen logo_clip = resize(logo_clip, width=1980, height=1080)# set > durtion logo
         logo_clip = logo_clip.set_position((635, 0))
         # Load the base sponsor image
@@ -136,30 +136,37 @@ def edit_video(video_path):
         sponsor_interval = 7*60 # 7 minutes in seconds ! its both: 17s> sponsor and lets>7min but becarefull in small secounds durtion.
         sponsor_clips = []
         i = 0
+        print("its editing function 3")
         for start_time in range(0, int(main_video.duration), sponsor_interval):
                 
             if start_time + 19 < main_video.duration:
+                print("its editing function 4")
                 if i % 2 == 0:
                     sponsor2 = base_sponsor_2.copy().set_start(start_time)
                     sponsor_clips.append(sponsor2)
+                    print("its editing function 5")
                     i += 1
                 else:
                     sponsor = base_sponsor.copy().set_start(start_time)
                     sponsor_clips.append(sponsor)
+                    print("its editing function 6")
                     i += 1
 
 
         main_withlogo = CompositeVideoClip([main_video, logo_clip]+ sponsor_clips) # add logo
+        print("its editing function 7")
 
 
 
         sponsor_beggning = ImageClip("sponsors/images/sponsor_2sec.png").set_duration(2) # setting sponsors & timing 
+        print("its editing function 8")
 
         split_1 = main_withlogo.subclip(0, cut_place_1)
         sponsorvideo_1_short = VideoFileClip("sponsors/videos/short_sponsor_1.mp4")
 
         split_2 = main_withlogo.subclip(cut_place_1, cut_place_2)
         sponsorvideo_2_middle = VideoFileClip("sponsors/videos/allsponsor2.mp4")
+        print("its editing function 9")
 
         split_3 = main_withlogo.subclip(cut_place_2, cut_place_3)
 
@@ -168,6 +175,7 @@ def edit_video(video_path):
         ghazzah1 = VideoFileClip("sponsors/videos/ghazzah1.mp4")
         sponsorvideo_3_end = CompositeVideoClip([ghazzah1, hadia1, editable_video])
         split_4 = main_withlogo.subclip(cut_place_3, cut_place_4)
+        print("its editing function 10")
 
 
 
@@ -175,7 +183,9 @@ def edit_video(video_path):
 
         final_clip = concatenate_videoclips([sponsor_beggning, split_1, sponsorvideo_1_short, split_2, sponsorvideo_2_middle, split_3, sponsorvideo_3_end, split_4, sponsorvideo_3_end]) # coneccting them together
         # final_clip = concatenate_videoclips([main_withlogo]) >>> for tasting only
+        print("its editing function 11")
         output_filename = get_available_filename("exported_taste/new_video")
+        print("its editing function 12")
         # final_clip = concatenate_videoclips([split_1, split_2]) >>> taste
         final_clip.write_videofile(output_filename, fps=main_video.fps)
         print("editing completed >>>>>")
