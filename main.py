@@ -189,7 +189,7 @@ def edit_video(video_path):
         final_clip = concatenate_videoclips([sponsor_beggning, split_1, sponsorvideo_1_short, split_2, sponsorvideo_2_middle, split_3, sponsorvideo_3_end, split_4, sponsorvideo_3_end]) # coneccting them together
         # final_clip = concatenate_videoclips([main_withlogo]) >>> for tasting only
         print("its editing function 11")
-        output_filename = get_available_filename("exported/new_video")
+        output_filename = get_available_filename("exported")
         
         print("its editing function 12")
         # final_clip = concatenate_videoclips([split_1, split_2]) >>> taste
