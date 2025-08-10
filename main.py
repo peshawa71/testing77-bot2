@@ -8,7 +8,6 @@ import tqdm
 import time
 
 
-
 # Load .env new adding new sponsor
 load_dotenv()
 
@@ -188,7 +187,12 @@ def edit_video(video_path):
         final_clip = concatenate_videoclips([sponsor_beggning, split_1, sponsorvideo_1_short, split_2, sponsorvideo_2_middle, split_3, sponsorvideo_3_end, split_4, sponsorvideo_3_end]) # coneccting them together
         # final_clip = concatenate_videoclips([main_withlogo]) >>> for tasting only
         print("its editing function 11")
-        output_filename = get_available_filename("exported_taste/new_video")
+        output_filename = get_available_filename("exported/new_video")
+        if not os.path.exists(output_filename):
+            os.mkdir(output_filename)
+            print(f"Created: {output_filename}")
+        else:
+            print(f"path {output_filename} exsest bro")
         print("its editing function 12")
         # final_clip = concatenate_videoclips([split_1, split_2]) >>> taste
         final_clip.write_videofile(output_filename, fps=main_video.fps)
