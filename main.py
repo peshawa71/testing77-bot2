@@ -25,7 +25,7 @@ if not os.path.exists(file_exports):
     os.mkdir(file_exports)
     print(f"Created: {file_exports}")
 else:
-    print(f"path {output_filename} exsest bro")
+    print(f"path {file_exports} exsest bro")
 
 def create_path(path_str):
     """
