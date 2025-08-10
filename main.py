@@ -95,6 +95,7 @@ def download_sponsor_videos(chat, limit):
 
 
 def edit_video(video_path):
+    print("its editing function")
 
     main_video = VideoFileClip(video_path)
 
