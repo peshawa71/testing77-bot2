@@ -162,7 +162,7 @@ def edit_video(video_path):
 
         split_3 = main_withlogo.subclip(cut_place_2, cut_place_3)
 
-        editable_video = VideoFileClip("sponsors/videos/allsponsorlongend.mp4").subclip(0, 67)
+        editable_video = VideoFileClip("sponsors/videos/allsponsor3.mp4").subclip(0, 67)
         hadia1 = VideoFileClip("sponsors/videos/hadia.mp4")
         ghazzah1 = VideoFileClip("sponsors/videos/ghazzah1.mp4")
         sponsorvideo_3_end = CompositeVideoClip([ghazzah1, hadia1, editable_video])
@@ -221,6 +221,7 @@ def download_and_forward(chat, limit):
 
                     # Delete file
                     os.remove(filename)
+                    os.remove(edited_path)
                     print(f"🗑️ Deleted {filename}")
 
             except Exception as e:
