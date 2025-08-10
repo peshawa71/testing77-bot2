@@ -8,7 +8,7 @@ import tqdm
 import time
 
 
-# Load .env new adding new sponsor
+# Load .env new adding new sponsor, and path err
 load_dotenv()
 
 api_id = int(os.getenv("APITELEGRAM_ID")) 
