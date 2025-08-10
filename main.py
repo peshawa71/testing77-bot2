@@ -193,7 +193,7 @@ def edit_video(video_path):
         
         print("its editing function 12")
         # final_clip = concatenate_videoclips([split_1, split_2]) >>> taste
-        final_clip.write_videofile(output_filename, fps=main_video.fps)
+        final_clip.write_videofile(output_filename, fps=main_video.fps, codec="libx264", audio_codec="aac")
         print("editing completed >>>>>")
 
     return output_filename
