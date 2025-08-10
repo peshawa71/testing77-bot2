@@ -1,4 +1,4 @@
 telethon
 python-dotenv
 tqdm
-moviepy
+moviepy==1.0.3
