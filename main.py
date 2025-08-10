@@ -10,7 +10,7 @@ import time
 
 
 
-# Load .env new
+# Load .env new adding new sponsor
 load_dotenv()
 
 api_id = int(os.getenv("APITELEGRAM_ID")) 
