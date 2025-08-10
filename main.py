@@ -20,6 +20,12 @@ os.makedirs(DOWNLOADS_DIR, exist_ok=True)
 client = TelegramClient("new_session", api_id, api_hash)
 client.start()
 
+file_exports = "exported/new_video"
+if not os.path.exists(file_exports):
+    os.mkdir(file_exports)
+    print(f"Created: {file_exports}")
+else:
+    print(f"path {output_filename} exsest bro")
 
 def create_path(path_str):
     """
@@ -180,19 +186,11 @@ def edit_video(video_path):
         split_4 = main_withlogo.subclip(cut_place_3, cut_place_4)
         print("its editing function 13")
 
-
-
-
-
         final_clip = concatenate_videoclips([sponsor_beggning, split_1, sponsorvideo_1_short, split_2, sponsorvideo_2_middle, split_3, sponsorvideo_3_end, split_4, sponsorvideo_3_end]) # coneccting them together
         # final_clip = concatenate_videoclips([main_withlogo]) >>> for tasting only
         print("its editing function 11")
         output_filename = get_available_filename("exported/new_video")
-        if not os.path.exists(output_filename):
-            os.mkdir(output_filename)
-            print(f"Created: {output_filename}")
-        else:
-            print(f"path {output_filename} exsest bro")
+        
         print("its editing function 12")
         # final_clip = concatenate_videoclips([split_1, split_2]) >>> taste
         final_clip.write_videofile(output_filename, fps=main_video.fps)
@@ -218,12 +216,9 @@ def download_and_forward(chat, limit):
         if msg.media and "چیرۆکی شەوێک" in msg.text:
         # if msg.media:
 
-
             # for message2 in tqdm.tqdm(messages) if message2.media and "چیرۆکی شەوێک" in message2.text and message2.id == max_id:
             #     current_max_id = msg.id
             #     DOWNLOAD_VIDEO = message2
-
-            
 
             try:
                 
@@ -233,7 +228,6 @@ def download_and_forward(chat, limit):
                 if filename:
                     print(f"\n✅ Downloaded: {filename}")
                     edited_path = edit_video(filename)
-
 
                     # Send to another channel
                     client.send_file(channel_to_send, edited_path, caption=f"{msg.text}", supports_streaming=True)
