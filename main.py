@@ -118,12 +118,12 @@ def edit_video(video_path):
         #video sponsor_onscreen logo_clip = resize(logo_clip, width=1980, height=1080)# set > durtion logo
         logo_clip = logo_clip.set_position((635, 0))
         # Load the base sponsor image
-        base_sponsor = ImageClip("sponsors\images\onscreen1.png") \
+        base_sponsor = ImageClip("sponsors/images/onscreen1.png") \
             .set_duration(17) \
             .set_pos(("center", "bottom")) \
             .fadein(0.5).fadeout(0.5)
         # change this line bro >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-        base_sponsor_2 = ImageClip("sponsors\images\onscreen4.png") \
+        base_sponsor_2 = ImageClip("sponsors/images/onscreen4.png") \
             .set_duration(17) \
             .set_pos(("center", "bottom")) \
             .fadein(0.5).fadeout(0.5)
@@ -152,19 +152,19 @@ def edit_video(video_path):
 
 
 
-        sponsor_beggning = ImageClip("sponsors\images\sponsor_2sec.png").set_duration(2) # setting sponsors & timing 
+        sponsor_beggning = ImageClip("sponsors/images/sponsor_2sec.png").set_duration(2) # setting sponsors & timing 
 
         split_1 = main_withlogo.subclip(0, cut_place_1)
-        sponsorvideo_1_short = VideoFileClip("sponsors\videos\short_sponsor_1.mp4")
+        sponsorvideo_1_short = VideoFileClip("sponsors/videos/short_sponsor_1.mp4")
 
         split_2 = main_withlogo.subclip(cut_place_1, cut_place_2)
-        sponsorvideo_2_middle = VideoFileClip("sponsors\videos\allsponsor2.mp4")
+        sponsorvideo_2_middle = VideoFileClip("sponsors/videos/allsponsor2.mp4")
 
         split_3 = main_withlogo.subclip(cut_place_2, cut_place_3)
 
-        editable_video = VideoFileClip("sponsors\videos\allsponsorlongend.mp4").subclip(0, 67)
-        hadia1 = VideoFileClip("sponsors\videos\hadia.mp4")
-        ghazzah1 = VideoFileClip("sponsors\videos\ghazzah1.mp4")
+        editable_video = VideoFileClip("sponsors/videos/allsponsorlongend.mp4").subclip(0, 67)
+        hadia1 = VideoFileClip("sponsors/videos/hadia.mp4")
+        ghazzah1 = VideoFileClip("sponsors/videos/ghazzah1.mp4")
         sponsorvideo_3_end = CompositeVideoClip([ghazzah1, hadia1, editable_video])
         split_4 = main_withlogo.subclip(cut_place_3, cut_place_4)
 
