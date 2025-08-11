@@ -192,9 +192,15 @@ def edit_video(video_path):
         output_filename = get_available_filename("exported")
         
         print("its editing function 12")
-        # final_clip = concatenate_videoclips([split_1, split_2]) >>> taste
-        final_clip.write_videofile(output_filename, fps=main_video.fps, codec="libx264", audio_codec="aac")
-        print("editing completed >>>>>")
+        try:
+            # final_clip = concatenate_videoclips([split_1, split_2]) >>> taste
+            final_clip.write_videofile(output_filename, fps=main_video.fps, codec="libx264", audio_codec="aac")
+            print("editing completed >>>>>")
+        except Exception as e:
+            print("❌ Error while exporting video:")
+            print(str(e))
+            
+
 
     return output_filename
 
