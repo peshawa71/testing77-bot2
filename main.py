@@ -9,7 +9,7 @@ import time
 import imageio_ffmpeg as ffmpeg
 
 
-# Load .env new adding new sponsor, and path err same
+# Load .env new adding new sponsor, and path err same shexm nama
 load_dotenv()
 
 api_id = int(os.getenv("APITELEGRAM_ID")) 
@@ -193,7 +193,7 @@ def edit_video(video_path):
         print("its editing function 15")
         try:
             # final_clip = concatenate_videoclips([split_1, split_2]) >>> taste
-            final_clip.write_videofile(f"{output_filename}/video.mp4", fps=24)
+            final_clip.write_videofile("video.mp4", fps=24)
             print("editing completed >>>>>")
         except Exception as e:
             print("❌ Error while exporting video:")
