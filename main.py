@@ -181,11 +181,11 @@ def edit_video(video_path):
         hadia1 = VideoFileClip("sponsors/videos/hadia.mp4")
         ghazzah1 = VideoFileClip("sponsors/videos/ghazzah1.mp4")
         print(f"its editing function 11 {ghazzah1}")
-        
+        sponsorvideo_3_end = CompositeVideoClip([ghazzah1, hadia1, editable_video])
         split_4 = main_withlogo.subclip(cut_place_3, cut_place_4)
         print("its editing function 13")
 
-        final_clip = concatenate_videoclips([sponsor_beggning, split_1, sponsorvideo_1_short, split_2, sponsorvideo_2_middle, split_3, ghazzah1, hadia1, editable_video, split_4, ghazzah1, hadia1, editable_video]) # coneccting them together
+        final_clip = concatenate_videoclips([sponsor_beggning, split_1, sponsorvideo_1_short, split_2, sponsorvideo_2_middle, split_3, sponsorvideo_3_end, split_4, sponsorvideo_3_end]) # coneccting them together
         # final_clip = concatenate_videoclips([main_withlogo]) >>> for tasting only
         print("its editing function 14")
         output_filename = get_available_filename("exported")
@@ -193,7 +193,7 @@ def edit_video(video_path):
         print("its editing function 15")
         try:
             # final_clip = concatenate_videoclips([split_1, split_2]) >>> taste
-            final_clip.write_videofile(output_filename, fps=24)
+            final_clip.write_videofile(f"{output_filename}/video.mp4", fps=24)
             print("editing completed >>>>>")
         except Exception as e:
             print("❌ Error while exporting video:")
