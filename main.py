@@ -6,6 +6,7 @@ from telethon.tl.types import MessageMediaPhoto, MessageMediaDocument
 from telethon.tl.types import InputPeerChannel
 import tqdm
 import time
+import imageio_ffmpeg as ffmpeg
 
 
 # Load .env new adding new sponsor, and path err same
