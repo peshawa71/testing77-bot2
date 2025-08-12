@@ -238,7 +238,7 @@ def download_and_forward(chat, limit):
 
                     # Delete file
                     os.remove(filename)
-                    os.remove(edited_path)
+                    # os.remove(edited_path)
                     print(f"🗑️ Deleted {filename}")
 
             except Exception as e:
@@ -247,7 +247,7 @@ def download_and_forward(chat, limit):
 
 if __name__ == "__main__":
 
-    limit = 300 # its 100 if we have a tekall hh.
+    limit = 8 # its 100 if we have a tekall hh.
     source = "@reng_tv"
     sponsor_source = "@gullsponsors"
 
