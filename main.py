@@ -230,15 +230,15 @@ def download_and_forward(chat, limit):
 
                 if filename:
                     print(f"\n✅ Downloaded: {filename}")
-                    # edited_path = edit_video(filename)
+                    edited_path = edit_video(filename)
 
                     # Send to another channel
-                    client.send_file(channel_to_send, filename, caption=f"{msg.text}", supports_streaming=True)
+                    client.send_file(channel_to_send, edited_path, caption=f"{msg.text}", supports_streaming=True)
                     print(f"🚀 Sent to {channel_to_send}\n")
 
                     # Delete file
                     os.remove(filename)
-                    # os.remove(edited_path)
+                    os.remove(edited_path)
                     print(f"🗑️ Deleted {filename}")
 
             except Exception as e:
