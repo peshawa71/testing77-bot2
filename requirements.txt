@@ -3,3 +3,13 @@ python-dotenv
 tqdm
 moviepy==1.0.3
 imageio[ffmpeg]
+
+requests
+Pillow
+moviepy==1.0.3
+gunicorn
+google-api-python-client
+google-auth
+google-auth-oauthlib
+google-auth-httplib2
+flask
