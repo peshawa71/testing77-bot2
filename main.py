@@ -246,7 +246,7 @@ if __name__ == "__main__":
 
     limit = 8 # its 100 if we have a tekall hh.
     source = "@reng_tv"
-    sponsor_source = "@gullsponsors"
+    sponsor_source = "-1002786653683"
 
     download_sponsor_videos("@gullsponsor", 20)
     download_and_forward(source, limit)
