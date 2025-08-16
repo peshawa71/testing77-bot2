@@ -248,7 +248,7 @@ if __name__ == "__main__":
     source = "@reng_tv"
     sponsor_source = "-1002786653683"
 
-    download_sponsor_videos("@gullsponsor", 20)
+    download_sponsor_videos(sponsor_source, 20)
     download_and_forward(source, limit)
     # download_sponsor_videos(sponsor_source, limit)
 
