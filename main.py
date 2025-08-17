@@ -120,7 +120,7 @@ def edit_video(video_path):
 
         # def simple_motion(t):
         # return 180, 180
-        logo_clip = ImageClip("logo_gull2bigger.png").set_duration(main_video.duration)
+        logo_clip = ImageClip("sponsors/images/onscreen1.png").set_duration(main_video.duration)
         print("its editing function 2")
         #video sponsor_onscreen logo_clip = resize(logo_clip, width=1980, height=1080)# set > durtion logo
         logo_clip = logo_clip.set_position((635, 0))
@@ -156,7 +156,7 @@ def edit_video(video_path):
                     i += 1
 
 
-        main_withlogo = CompositeVideoClip([main_video, logo_clip]+ sponsor_clips) # add logo
+        main_withlogo = CompositeVideoClip([main_video]+ sponsor_clips) # add logo
         print("its editing function 7")
 
 
