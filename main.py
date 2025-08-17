@@ -12,8 +12,8 @@ import imageio_ffmpeg as ffmpeg
 # Load .env new adding new sponsor, and path err same shexm nama
 load_dotenv()
 
-api_id = int(os.getenv("APITELEGRAM_ID")) 
-api_hash = os.getenv("APITELEGRAM_HASH")
+api_id = int(os.getenv("APITELEGRAM_ID2")) 
+api_hash = os.getenv("APITELEGRAM_HASH2")
 channel_to_send = -1002977262192
 
 DOWNLOADS_DIR = "downloads100"
