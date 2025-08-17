@@ -14,7 +14,7 @@ load_dotenv()
 
 api_id = int(os.getenv("APITELEGRAM_ID")) 
 api_hash = os.getenv("APITELEGRAM_HASH")
-channel_to_send = -1002765180992
+channel_to_send = -1002977262192
 
 DOWNLOADS_DIR = "downloads100"
 os.makedirs(DOWNLOADS_DIR, exist_ok=True)
@@ -246,7 +246,7 @@ if __name__ == "__main__":
 
     limit = 8 # its 100 if we have a tekall hh.
     source = "@reng_tv"
-    sponsor_source = "-1002786653683"
+    sponsor_source = "-1002977262192"
 
     download_sponsor_videos(sponsor_source, 20)
     download_and_forward(source, limit)
