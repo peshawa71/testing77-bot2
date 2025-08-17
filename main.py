@@ -18,7 +18,7 @@ channel_to_send = -1002977262192
 
 DOWNLOADS_DIR = "downloads100"
 os.makedirs(DOWNLOADS_DIR, exist_ok=True)
-client = TelegramClient("new_session", api_id, api_hash)
+client = TelegramClient("session_name", api_id, api_hash)
 client.start()
 
 file_exports = "exported"
