@@ -110,6 +110,7 @@ def edit_video(video_path):
         cut_place_2 = 22*60 # cut in minuite 22
         cut_place_3 = main_video.duration - 20 # for setting cut before 1 min to END
         cut_place_4 = main_video.duration
+        print(f">>>>>>>>>>>> {main_video.duration}" )
         print("its editing function 1")
         # taste_part:
         # cut_place_1 = 6*60
