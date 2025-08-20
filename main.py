@@ -111,55 +111,6 @@ def edit_video(video_path):
         cut_place_3 = main_video.duration - 20 # for setting cut before 1 min to END
         cut_place_4 = main_video.duration
         print(f">>>>>>>>>>>> {main_video.duration}" )
-        print("its editing function 1")
-        # taste_part:
-        # cut_place_1 = 6*60
-        # cut_place_2 = 22*60 # cut in minuite 22
-        # cut_place_3 = main_video.duration - 2 # for tessting its 2 sec
-        # cut_place_4 = main_video.duration
-        
-        # def simple_motion(t):
-        # return 180, 180
-        # logo_clip = ImageClip("sponsors/images/onscreen1.png").set_duration(main_video.duration)
-        print("its editing function 2")
-        #video sponsor_onscreen logo_clip = resize(logo_clip, width=1980, height=1080)# set > durtion logo
-        # logo_clip = logo_clip.set_position((635, 0))
-        # Load the base sponsor image
-        # base_sponsor = ImageClip("sponsors/images/onscreen1.png") \
-        #     .set_duration(17) \
-        #     .set_pos(("center", "bottom")) \
-        #     .fadein(0.5).fadeout(0.5)
-        # # change this line bro >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-        # base_sponsor_2 = ImageClip("sponsors/images/onscreen4.png") \
-        #     .set_duration(17) \
-        #     .set_pos(("center", "bottom")) \
-        #     .fadein(0.5).fadeout(0.5)
-        # # Generate sponsor times every 7 minutes
-
-        # sponsor_interval = 7*60 # 7 minutes in seconds ! its both: 17s> sponsor and lets>7min but becarefull in small secounds durtion.
-        # sponsor_clips = []
-        # i = 0
-        # print("its editing function 3")
-        # for start_time in range(0, int(main_video.duration), sponsor_interval):
-                
-        #     if start_time + 19 < main_video.duration:
-        #         print("its editing function 4")
-        #         if i % 2 == 0:
-        #             sponsor2 = base_sponsor_2.copy().set_start(start_time)
-        #             sponsor_clips.append(sponsor2)
-        #             print("its editing function 5")
-        #             i += 1
-        #         else:
-        #             sponsor = base_sponsor.copy().set_start(start_time)
-        #             sponsor_clips.append(sponsor)
-        #             print("its editing function 6")
-        #             i += 1
-
-
-        # main_withlogo = CompositeVideoClip([main_video]+ sponsor_clips) # add logo
-        # print("its editing function 7")
-
-
 
         sponsor_beggning = ImageClip("sponsors/images/sponsor_2sec.png").set_duration(2) # setting sponsors & timing 
         print("its editing function 8")
