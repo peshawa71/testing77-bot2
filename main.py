@@ -100,50 +100,54 @@ def download_sponsor_videos(chat, limit):
 
 
 def edit_video(video_path):
-    print("its editing function")
-
+    client.send_message(-1002979232337,"editing starts!")
     main_video = VideoFileClip(video_path)
+    print(f"video durtion = {main_video.duration}")
 
     if main_video.duration > 25*60:
+        print("video starts editing... loading")
 
         cut_place_1 = 6*60
         cut_place_2 = 22*60 # cut in minuite 22
         cut_place_3 = main_video.duration - 20 # for setting cut before 1 min to END
         cut_place_4 = main_video.duration
-        print(f">>>>>>>>>>>> {main_video.duration}" )
+        
+        # taste_part:
+        # cut_place_1 = 6*60
+        # cut_place_2 = 22*60 # cut in minuite 22
+        # cut_place_3 = main_video.duration - 2 # for tessting its 2 sec
+        # cut_place_4 = main_video.duration
+        #video sponsor_onscreen logo_clip = resize(logo_clip, width=1980, height=1080)# set > durtion logo
+        # Load the base sponsor image
 
         sponsor_beggning = ImageClip("sponsors/images/sponsor_2sec.png").set_duration(2) # setting sponsors & timing 
-        print("its editing function 8")
 
         split_1 = main_video.subclip(0, cut_place_1)
-        sponsorvideo_1_short = VideoFileClip("sponsors/videos/short_sponsor_1.mp4")
+        shortsponsor1 = VideoFileClip("sponsors/videos/shortsponsor_1.mp4")
 
         split_2 = main_video.subclip(cut_place_1, cut_place_2)
-        sponsorvideo_2_middle = VideoFileClip("sponsors/videos/allsponsor1.mp4")
-        print("its editing function 9")
+        allsponsor1 = VideoFileClip("sponsors/videos/allsponsor1.mp4")
 
         split_3 = main_video.subclip(cut_place_2, cut_place_3)
-        print("its editing function 10")
 
-        editable_video = VideoFileClip("sponsors/videos/allsponsor2.mp4")
-        split_4 = main_withlogo.subclip(cut_place_3, cut_place_4)
-        print("its editing function 13")
+        split_4 = main_video.subclip(cut_place_3, cut_place_4)
+        allsponsor2 = VideoFileClip("sponsors/videos/allsponsor2.mp4")
 
-        final_clip = concatenate_videoclips([sponsor_beggning, split_1, sponsorvideo_1_short, split_2, sponsorvideo_2_middle, split_3, sponsorvideo_3_end, split_4, sponsorvideo_3_end]) # coneccting them together
+        final_clip = concatenate_videoclips([sponsor_beggning, split_1, shortsponsor1, split_2, allsponsor1, split_3, allsponsor2, split_4, allsponsor2]) # coneccting them together
         # final_clip = concatenate_videoclips([main_withlogo]) >>> for tasting only
-        print("its editing function 14")
-        output_filename = get_available_filename("exported")
+        output_filename = get_available_filename("exported/new_video")
+
+        # final_clip = concatenate_videoclips([split_1, split_2]) >>> taste
+
+        final_clip.write_videofile(
+            output_filename,
+            codec="libx264",
+            preset="ultrafast",
+            ffmpeg_params=["-crf", "0"],   # CRF 0 = lossless
+            audio_codec="aac"
+        )
         
-        print("its editing function 15")
-        try:
-            # final_clip = concatenate_videoclips([split_1, split_2]) >>> taste
-            final_clip.write_videofile("video.mp4", fps=main_video.fps)
-            print("editing completed >>>>>")
-        except Exception as e:
-            print("❌ Error while exporting video:")
-            print(str(e))
-            
-    return output_filename
+        return output_filename
 
 
 def download_and_forward(chat, limit):
