@@ -121,58 +121,58 @@ def edit_video(video_path):
 
         # def simple_motion(t):
         # return 180, 180
-        logo_clip = ImageClip("sponsors/images/onscreen1.png").set_duration(main_video.duration)
+        # logo_clip = ImageClip("sponsors/images/onscreen1.png").set_duration(main_video.duration)
         print("its editing function 2")
         #video sponsor_onscreen logo_clip = resize(logo_clip, width=1980, height=1080)# set > durtion logo
-        logo_clip = logo_clip.set_position((635, 0))
+        # logo_clip = logo_clip.set_position((635, 0))
         # Load the base sponsor image
-        base_sponsor = ImageClip("sponsors/images/onscreen1.png") \
-            .set_duration(17) \
-            .set_pos(("center", "bottom")) \
-            .fadein(0.5).fadeout(0.5)
-        # change this line bro >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-        base_sponsor_2 = ImageClip("sponsors/images/onscreen4.png") \
-            .set_duration(17) \
-            .set_pos(("center", "bottom")) \
-            .fadein(0.5).fadeout(0.5)
-        # Generate sponsor times every 7 minutes
+        # base_sponsor = ImageClip("sponsors/images/onscreen1.png") \
+        #     .set_duration(17) \
+        #     .set_pos(("center", "bottom")) \
+        #     .fadein(0.5).fadeout(0.5)
+        # # change this line bro >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        # base_sponsor_2 = ImageClip("sponsors/images/onscreen4.png") \
+        #     .set_duration(17) \
+        #     .set_pos(("center", "bottom")) \
+        #     .fadein(0.5).fadeout(0.5)
+        # # Generate sponsor times every 7 minutes
 
-        sponsor_interval = 7*60 # 7 minutes in seconds ! its both: 17s> sponsor and lets>7min but becarefull in small secounds durtion.
-        sponsor_clips = []
-        i = 0
-        print("its editing function 3")
-        for start_time in range(0, int(main_video.duration), sponsor_interval):
+        # sponsor_interval = 7*60 # 7 minutes in seconds ! its both: 17s> sponsor and lets>7min but becarefull in small secounds durtion.
+        # sponsor_clips = []
+        # i = 0
+        # print("its editing function 3")
+        # for start_time in range(0, int(main_video.duration), sponsor_interval):
                 
-            if start_time + 19 < main_video.duration:
-                print("its editing function 4")
-                if i % 2 == 0:
-                    sponsor2 = base_sponsor_2.copy().set_start(start_time)
-                    sponsor_clips.append(sponsor2)
-                    print("its editing function 5")
-                    i += 1
-                else:
-                    sponsor = base_sponsor.copy().set_start(start_time)
-                    sponsor_clips.append(sponsor)
-                    print("its editing function 6")
-                    i += 1
+        #     if start_time + 19 < main_video.duration:
+        #         print("its editing function 4")
+        #         if i % 2 == 0:
+        #             sponsor2 = base_sponsor_2.copy().set_start(start_time)
+        #             sponsor_clips.append(sponsor2)
+        #             print("its editing function 5")
+        #             i += 1
+        #         else:
+        #             sponsor = base_sponsor.copy().set_start(start_time)
+        #             sponsor_clips.append(sponsor)
+        #             print("its editing function 6")
+        #             i += 1
 
 
-        main_withlogo = CompositeVideoClip([main_video]+ sponsor_clips) # add logo
-        print("its editing function 7")
+        # main_withlogo = CompositeVideoClip([main_video]+ sponsor_clips) # add logo
+        # print("its editing function 7")
 
 
 
         sponsor_beggning = ImageClip("sponsors/images/sponsor_2sec.png").set_duration(2) # setting sponsors & timing 
         print("its editing function 8")
 
-        split_1 = main_withlogo.subclip(0, cut_place_1)
+        split_1 = main_video.subclip(0, cut_place_1)
         sponsorvideo_1_short = VideoFileClip("sponsors/videos/short_sponsor_1.mp4")
 
-        split_2 = main_withlogo.subclip(cut_place_1, cut_place_2)
+        split_2 = main_video.subclip(cut_place_1, cut_place_2)
         sponsorvideo_2_middle = VideoFileClip("sponsors/videos/allsponsor2.mp4")
         print("its editing function 9")
 
-        split_3 = main_withlogo.subclip(cut_place_2, cut_place_3)
+        split_3 = main_video.subclip(cut_place_2, cut_place_3)
         print("its editing function 10")
 
         editable_video = VideoFileClip("sponsors/videos/allsponsor3.mp4").subclip(0, 67)
@@ -191,7 +191,7 @@ def edit_video(video_path):
         print("its editing function 15")
         try:
             # final_clip = concatenate_videoclips([split_1, split_2]) >>> taste
-            final_clip.write_videofile("video.mp4", fps=24)
+            final_clip.write_videofile("video.mp4", fps=main_video.fps)
             print("editing completed >>>>>")
         except Exception as e:
             print("❌ Error while exporting video:")
