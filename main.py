@@ -179,7 +179,7 @@ def edit_video(video_path):
         hadia1 = VideoFileClip("sponsors/videos/hadia.mp4")
         ghazzah1 = VideoFileClip("sponsors/videos/ghazzah1.mp4")
         print(f"its editing function 11 {ghazzah1}")
-        sponsorvideo_3_end = CompositeVideoClip([ghazzah1, hadia1, editable_video])
+        sponsorvideo_3_end = concatenate_videoclips([ghazzah1, hadia1, editable_video])
         split_4 = main_withlogo.subclip(cut_place_3, cut_place_4)
         print("its editing function 13")
 
