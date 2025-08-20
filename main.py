@@ -80,7 +80,7 @@ def download_sponsor_videos(chat, limit):
             try:
 
                 namefile = get_available_filename(f"sponsors/{msg.message}")
-                if msg.id == 2 and msg.id == 3 and msg.id == 4:
+                if "images" in msg.message :
                     namefile = get_available_filename(f"sponsors/{msg.message}", "")
 
 
@@ -117,8 +117,7 @@ def edit_video(video_path):
         # cut_place_2 = 22*60 # cut in minuite 22
         # cut_place_3 = main_video.duration - 2 # for tessting its 2 sec
         # cut_place_4 = main_video.duration
-
-
+        
         # def simple_motion(t):
         # return 180, 180
         # logo_clip = ImageClip("sponsors/images/onscreen1.png").set_duration(main_video.duration)
@@ -169,17 +168,13 @@ def edit_video(video_path):
         sponsorvideo_1_short = VideoFileClip("sponsors/videos/short_sponsor_1.mp4")
 
         split_2 = main_video.subclip(cut_place_1, cut_place_2)
-        sponsorvideo_2_middle = VideoFileClip("sponsors/videos/allsponsor2.mp4")
+        sponsorvideo_2_middle = VideoFileClip("sponsors/videos/allsponsor1.mp4")
         print("its editing function 9")
 
         split_3 = main_video.subclip(cut_place_2, cut_place_3)
         print("its editing function 10")
 
-        editable_video = VideoFileClip("sponsors/videos/allsponsor3.mp4").subclip(0, 67)
-        hadia1 = VideoFileClip("sponsors/videos/hadia.mp4")
-        ghazzah1 = VideoFileClip("sponsors/videos/ghazzah1.mp4")
-        print(f"its editing function 11 {ghazzah1}")
-        sponsorvideo_3_end = concatenate_videoclips([ghazzah1, hadia1, editable_video])
+        editable_video = VideoFileClip("sponsors/videos/allsponsor2.mp4")
         split_4 = main_withlogo.subclip(cut_place_3, cut_place_4)
         print("its editing function 13")
 
@@ -245,7 +240,7 @@ def download_and_forward(chat, limit):
 
 if __name__ == "__main__":
 
-    limit = 8 # its 100 if we have a tekall hh.
+    limit = 300 # its 100 if we have a tekall hh.
     source = "@reng_tv"
     sponsor_source = "sponsor_hadia"
 
