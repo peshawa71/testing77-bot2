@@ -84,7 +84,7 @@ def download_sponsor_videos(chat, limit):
                     namefile = get_available_filename(f"sponsors/{msg.message}", "")
 
 
-                print(f"\n📥 Downloading media from message ID {msg.id} {msg.text} loading...")
+                print(f"\n 📥 Downloading media from message ID {msg.id} {msg.text} loading...")
                 filename = client.download_media(msg, namefile)
                 print(f"{filename} dowmnloaded")
 
@@ -103,6 +103,8 @@ def edit_video(video_path):
     client.send_message(-1002979232337,"editing starts!")
     main_video = VideoFileClip(video_path)
     print(f"video durtion = {main_video.duration}")
+    client.send_message(-1002979232337,f"{main_video.duration} ")
+
 
     if main_video.duration > 25*60:
         print("video starts editing... loading")
@@ -140,7 +142,7 @@ def edit_video(video_path):
         # final_clip = concatenate_videoclips([split_1, split_2]) >>> taste
 
         final_clip.write_videofile(
-            "exported/new_video",
+            output_filename,
             codec="libx264",
             preset="ultrafast",
             ffmpeg_params=["-crf", "0"],   # CRF 0 = lossless
@@ -187,12 +189,19 @@ def download_and_forward(chat, limit):
 
             
             edited_path = edit_video(filename)
-            client.send_file(channel_to_send, edited_path, caption=f"{msg.text}", supports_streaming=True)
-            print(f"🚀 Sent {edited_path} to {channel_to_send}\n")
-            # Delete file
-            os.remove(filename)
-            os.remove(edited_path)
-            print(f"🗑️ Deleted {filename}")
+            if edited_path is None:
+
+                print(f"❌ Error: edited path = {edited_path}Edited path is None, skipping file.")
+                client.send_message(-1002979232337,f"❌ Error: edited path = {edited_path}Edited path is None, skipping file.")
+                continue
+            else:
+
+                client.send_file(channel_to_send, edited_path, caption=f"{msg.text}", supports_streaming=True)
+                print(f"🚀 Sent {edited_path} to {channel_to_send}\n")
+                # Delete file
+                os.remove(filename)
+                os.remove(edited_path)
+                print(f"🗑️ Deleted {filename}")
 
 
 
@@ -205,5 +214,3 @@ if __name__ == "__main__":
     download_sponsor_videos(sponsor_source, 20)
     download_and_forward(source, limit)
     # download_sponsor_videos(sponsor_source, limit)
-
-
