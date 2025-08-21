@@ -196,10 +196,12 @@ def download_and_forward(chat, limit):
                 client.send_message(-1002979232337,f"❌ Error: edited path = {edited_path}Edited path is None, skipping file.")
                 continue
             else:
+                client = TelegramClient("session_name", api_id, api_hash)
+                client.start()
                 client.send_message(-1002979232337,f"❌ Error: edited path = {edited_path}sending file.")
                 client.send_file(channel_to_send, edited_path, caption=f"{msg.text}", supports_streaming=True)
                 print(f"🚀 Sent {edited_path} to {channel_to_send}\n")
-                # Delete file
+                # Delete file`
                 os.remove(filename)
                 os.remove(edited_path)
                 print(f"🗑️ Deleted {filename}")
