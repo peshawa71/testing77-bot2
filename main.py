@@ -135,7 +135,8 @@ def edit_video(video_path):
         split_4 = main_video.subclip(cut_place_3, cut_place_4)
         allsponsor2 = VideoFileClip("sponsors/videos/allsponsor2.mp4")
 
-        final_clip = concatenate_videoclips([split_1, shortsponsor1, split_2, allsponsor1, split_3, allsponsor2, split_4, allsponsor2]) # coneccting them together
+        # final_clip = concatenate_videoclips([split_1, shortsponsor1, split_2, allsponsor1, split_3, allsponsor2, split_4, allsponsor2]) # coneccting them together
+        final_clip = concatenate_videoclips([split_1, shortsponsor1, split_2, allsponsor1])
         # final_clip = concatenate_videoclips([main_withlogo]) >>> for tasting only
         output_filename = get_available_filename("exported/new_video")
 
