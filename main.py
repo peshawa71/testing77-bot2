@@ -146,8 +146,7 @@ def edit_video(video_path):
             ffmpeg_params=["-crf", "0"],   # CRF 0 = lossless
             audio_codec="aac"
         )
-        
-        client.send_file(channel_to_send, edited_path, caption=f"{msg.text}", supports_streaming=True)
+    
         
         return output_filename
 
@@ -188,6 +187,7 @@ def download_and_forward(chat, limit):
 
             
             edited_path = edit_video(filename)
+            client.send_file(channel_to_send, edited_path, caption=f"{msg.text}", supports_streaming=True)
             print(f"🚀 Sent to {channel_to_send}\n")
             # Delete file
             os.remove(filename)
