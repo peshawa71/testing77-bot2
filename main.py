@@ -109,8 +109,8 @@ def edit_video(video_path):
     if main_video.duration > 25*60:
     # if main_video:
         print("video starts editing... loading")
-        cut_place_1 = 6
-        cut_place_2 = 22 # cut in minuite 22
+        cut_place_1 = 6*60
+        cut_place_2 = 22*60 # cut in minuite 22
         cut_place_3 = main_video.duration - 20 # for setting cut before 1 min to END
         cut_place_4 = main_video.duration
         
