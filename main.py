@@ -149,7 +149,25 @@ def edit_video(video_path):
             ffmpeg_params=["-crf", "0"],   # CRF 0 = lossless
             audio_codec="aac"
         )
-    
+        
+        import subprocess
+        
+        def merge_chunks(parts, output_file="final.mp4"):
+            # Write all parts to a text file
+            with open("chunks.txt", "w") as f:
+                for p in parts:
+                    f.write(f"file '{p}'\n")
+            
+            # Merge using FFmpeg (no re-encode, fast)
+            subprocess.run([
+                "ffmpeg", "-f", "concat", "-safe", "0",
+                "-i", "chunks.txt", "-c", "copy", output_file
+            ])
+        
+        # Example usage:
+        parts = ["output_part1.mp4", "output_part2.mp4", "output_part3.mp4"]
+        merge_chunks(parts, "final_output.mp4")
+
         
         return output_filename
 
@@ -196,7 +214,6 @@ def download_and_forward(chat, limit):
                 client.send_message(-1002979232337,f"❌ Error: edited path = {edited_path}Edited path is None, skipping file.")
                 continue
             else:
-                client = TelegramClient("session_name", api_id, api_hash)
                 client.start()
                 client.send_message(-1002979232337,f"❌ Error: edited path = {edited_path}sending file.")
                 client.send_file(channel_to_send, edited_path, caption=f"{msg.text}", supports_streaming=True)
