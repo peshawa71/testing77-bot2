@@ -195,7 +195,7 @@ def download_and_forward(chat, limit):
                 client.send_message(-1002979232337,f"❌ Error: edited path = {edited_path}Edited path is None, skipping file.")
                 continue
             else:
-
+                
                 client.send_file(channel_to_send, edited_path, caption=f"{msg.text}", supports_streaming=True)
                 print(f"🚀 Sent {edited_path} to {channel_to_send}\n")
                 # Delete file
