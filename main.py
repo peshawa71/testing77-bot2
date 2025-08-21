@@ -106,10 +106,9 @@ def edit_video(video_path):
     client.send_message(-1002979232337,f"{main_video.duration} ")
 
 
-    # if main_video.duration > 25*60:
-    if main_video:
+    if main_video.duration > 25*60:
+    # if main_video:
         print("video starts editing... loading")
-
         cut_place_1 = 6
         cut_place_2 = 22 # cut in minuite 22
         cut_place_3 = main_video.duration - 20 # for setting cut before 1 min to END
