@@ -140,7 +140,7 @@ def edit_video(video_path):
         # final_clip = concatenate_videoclips([split_1, split_2]) >>> taste
 
         final_clip.write_videofile(
-            output_filename,
+            "exported/new_video",
             codec="libx264",
             preset="ultrafast",
             ffmpeg_params=["-crf", "0"],   # CRF 0 = lossless
