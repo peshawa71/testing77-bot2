@@ -197,6 +197,9 @@ def download_and_forward(chat, limit):
                 print(f"❌ sending file {filename}")
                 client.send_message(-1002979232337,f"sending {filename}.")
                 client.send_file(channel_to_send, filename, caption=f"{msg.text}", supports_streaming=True)
+                client.send_message(channel_to_send,f"sponspr")
+                client.send_message(channel_to_send,f"sponsor")
+                client.send_message(channel_to_send,f"sponsor")
                 print(f"🚀 Sent {edited_path} to {channel_to_send}\n")
                 # Delete file`
                 os.remove(filename)
