@@ -193,38 +193,37 @@ def download_and_forward(chat, limit):
                 filename = client.download_media(msg, DOWNLOADS_DIR)
 
                 if filename:
+                    
                     print(f"\n✅ Downloaded: {filename}")
 
+                    print(f"❌ sending file {filename}")
 
-                    # Send to another channel
+            # if edited_path is None:
+
+            #     print(f"❌ Error: edited path = {edited_path}Edited path is None, skipping file.")
+            #     client.send_message(-1002979232337,f"❌ Error: edited path = {edited_path}Edited path is None, skipping file.")
+            #     continue
+            # else:
+                
+                    client.start()
+                    client.send_message(-1002979232337,f"❌ Error: edited path = {edited_path}sending file.")
+                    client.send_file(channel_to_send, filename, caption=f"{msg.text}", supports_streaming=True)
+                    print(f"🚀 Sent {edited_path} to {channel_to_send}\n")
+                    # Delete file`
+                    os.remove(filename)
+                    os.remove(edited_path)
+                    print(f"🗑️ Deleted {filename}")
+                        # Send to another channel
             except Exception as e:
-                print(f"❌ file Error : {e}")
-
-            
-            edited_path = edit_video(filename)
-            if edited_path is None:
-
-                print(f"❌ Error: edited path = {edited_path}Edited path is None, skipping file.")
-                client.send_message(-1002979232337,f"❌ Error: edited path = {edited_path}Edited path is None, skipping file.")
-                continue
-            else:
-                client.start()
-                client.send_message(-1002979232337,f"❌ Error: edited path = {edited_path}sending file.")
-                client.send_file(channel_to_send, edited_path, caption=f"{msg.text}", supports_streaming=True)
-                print(f"🚀 Sent {edited_path} to {channel_to_send}\n")
-                # Delete file`
-                os.remove(filename)
-                os.remove(edited_path)
-                print(f"🗑️ Deleted {filename}")
-
-
+                
+                print(f"❌ sending file {e}")
 
 if __name__ == "__main__":
 
     limit = 300 # its 100 if we have a tekall hh.
     source = "@reng_tv"
-    sponsor_source = "sponsor_hadia"
+    # sponsor_source = "sponsor_hadia"
 
-    download_sponsor_videos(sponsor_source, 20)
+    # download_sponsor_videos(sponsor_source, 20)
     download_and_forward(source, limit)
     # download_sponsor_videos(sponsor_source, limit)
