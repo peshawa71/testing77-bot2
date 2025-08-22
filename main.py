@@ -14,8 +14,8 @@ load_dotenv()
 
 api_id = int(os.getenv("APITELEGRAM_ID2")) 
 api_hash = os.getenv("APITELEGRAM_HASH2")
-channel_to_send = -1002979232337
-
+channel_to_send = -1003057562903
+ch_to_send2 = -1002979232337
 DOWNLOADS_DIR = "downloads100"
 os.makedirs(DOWNLOADS_DIR, exist_ok=True)
 client = TelegramClient("session_name", api_id, api_hash)
