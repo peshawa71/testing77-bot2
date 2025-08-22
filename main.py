@@ -67,6 +67,7 @@ def download_sponsor_videos(chat, limit):
 
         # if msg.media and not msg.id == 9 and not msg.id == 4:
         if msg.media:
+            
             # current_path1 = create_path(f"taste/{msg.text}")
         # if msg.media: and "sponsor_onscreen" in msg.text 
 
@@ -191,31 +192,17 @@ def download_and_forward(chat, limit):
                 
                 print(f"\n📥 Downloading media from message ID {msg.id} {msg.text}...")
                 filename = client.download_media(msg, DOWNLOADS_DIR)
-
-                if filename:
                     
-                    print(f"\n✅ Downloaded: {filename}")
-
-                    print(f"❌ sending file {filename}")
-
-            # if edited_path is None:
-
-            #     print(f"❌ Error: edited path = {edited_path}Edited path is None, skipping file.")
-            #     client.send_message(-1002979232337,f"❌ Error: edited path = {edited_path}Edited path is None, skipping file.")
-            #     continue
-            # else:
-                
-                    client.start()
-                    client.send_message(-1002979232337,f"❌ Error: edited path = {edited_path}sending file.")
-                    client.send_file(channel_to_send, filename, caption=f"{msg.text}", supports_streaming=True)
-                    print(f"🚀 Sent {edited_path} to {channel_to_send}\n")
-                    # Delete file`
-                    os.remove(filename)
-                    os.remove(edited_path)
-                    print(f"🗑️ Deleted {filename}")
-                        # Send to another channel
+                print(f"\n✅ Downloaded: {filename}")
+                print(f"❌ sending file {filename}"
+                client.send_message(-1002979232337,f"sending {filename}.")
+                client.send_file(channel_to_send, filename, caption=f"{msg.text}", supports_streaming=True)
+                print(f"🚀 Sent {edited_path} to {channel_to_send}\n")
+                # Delete file`
+                os.remove(filename)
+                print(f"🗑️ Deleted {filename}")
+                    # Send to another channel
             except Exception as e:
-                
                 print(f"❌ sending file {e}")
 
 if __name__ == "__main__":
