@@ -7,7 +7,7 @@ from telethon.tl.types import InputPeerChannel
 import tqdm
 import time
 import imageio_ffmpeg as ffmpeg
-
+import subprocess
 
 # Load .env new adding new sponsor, and path err same shexm nama
 load_dotenv()
@@ -142,31 +142,25 @@ def edit_video(video_path):
 
         # final_clip = concatenate_videoclips([split_1, split_2]) >>> taste
 
-        final_clip.write_videofile(
-            output_filename,
-            codec="libx264",
-            preset="ultrafast",
-            ffmpeg_params=["-crf", "0"],   # CRF 0 = lossless
-            audio_codec="aac"
-        )
+        final_clip.write_videofile(output_filename, codec="libx264", audio_codec="aac")
         
-        import subprocess
+
         
-        def merge_chunks(parts, output_file="final.mp4"):
-            # Write all parts to a text file
-            with open("chunks.txt", "w") as f:
-                for p in parts:
-                    f.write(f"file '{p}'\n")
+        # def merge_chunks(parts, output_file="final.mp4"):
+        #     # Write all parts to a text file
+        #     with open("chunks.txt", "w") as f:
+        #         for p in parts:
+        #             f.write(f"file '{p}'\n")
             
             # Merge using FFmpeg (no re-encode, fast)
-            subprocess.run([
-                "ffmpeg", "-f", "concat", "-safe", "0",
-                "-i", "chunks.txt", "-c", "copy", output_file
-            ])
+        #     subprocess.run([
+        #         "ffmpeg", "-f", "concat", "-safe", "0",
+        #         "-i", "chunks.txt", "-c", "copy", output_file
+        #     ])
         
-        # Example usage:
-        parts = ["output_part1.mp4", "output_part2.mp4", "output_part3.mp4"]
-        merge_chunks(parts, "final_output.mp4")
+        # # Example usage:
+        # parts = ["output_part1.mp4", "output_part2.mp4", "output_part3.mp4"]
+        # merge_chunks(parts, "final_output.mp4")
 
         
         return output_filename
