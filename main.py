@@ -194,7 +194,7 @@ def download_and_forward(chat, limit):
                 filename = client.download_media(msg, DOWNLOADS_DIR)
                     
                 print(f"\n✅ Downloaded: {filename}")
-                print(f"❌ sending file {filename}"
+                print(f"❌ sending file {filename}")
                 client.send_message(-1002979232337,f"sending {filename}.")
                 client.send_file(channel_to_send, filename, caption=f"{msg.text}", supports_streaming=True)
                 print(f"🚀 Sent {edited_path} to {channel_to_send}\n")
